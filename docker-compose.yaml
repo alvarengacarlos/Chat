@@ -1,0 +1,19 @@
+version: '3.9'
+
+networks:
+    internetNetwork:
+        name: internetNetwork
+    localNetwork:
+        name: localNetwork
+
+services:
+    chat:
+        image: node:16-buster
+        container_name: chat
+        working_dir: /home/chat/
+        volumes:
+            - ./:/home/chat/
+        ports:
+          - 3000:3000
+        networks:
+            - localNetwork
