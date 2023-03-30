@@ -2,12 +2,9 @@
   "name": "chat",
   "version": "1.0.0",
   "description": "this is a simple chat write in nodejs",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:aliceRoom": "node ./src/server/aliceRoom.js",
+    "start:bobRoom": "node ./src/server/bobRoom.js"
   },
   "repository": {
     "type": "git",

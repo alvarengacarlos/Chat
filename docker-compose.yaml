@@ -1,20 +1,26 @@
 version: '3.9'
 
-networks:
-    internetNetwork:
-        name: internetNetwork
-    localNetwork:
-        name: localNetwork
+networks:    
+    intranet:
+        name: intranet
 
 services:
-    chat:
+    aliceChat:
         image: node:16-buster
-        container_name: chat
-        working_dir: /home/chat/
+        container_name: aliceChat
+        working_dir: /home/aliceChat/
+        command: sh -c 'npm run start:aliceRoom'
         volumes:
-            - ./:/home/chat/
-        ports:
-          - 3000:3000
+            - ./:/home/aliceChat/        
         networks:
-            - localNetwork
-            - internetNetwork
+            - intranet
+            
+    bobChat:
+        image: node:16-buster
+        container_name: bobChat
+        working_dir: /home/bobChat/
+        command: sh -c 'npm run start:bobRoom'
+        volumes:
+            - ./:/home/bobChat/        
+        networks:
+            - intranet
